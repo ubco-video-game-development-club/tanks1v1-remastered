@@ -174,3 +174,4 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 4059843505895431683, guid: f432389d373b8ec42afcd9870ed9eb0a,
     type: 3}
   maxHealth: 30
+  endMatchDelay: 3

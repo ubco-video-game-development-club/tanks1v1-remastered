@@ -8,6 +8,11 @@ public class HealthBar : MonoBehaviour
     public Vector2 offset;
 
     private Transform target;
+    private CanvasGroup canvasGroup;
+
+    void Awake() {
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     void Update() {
         if (target != null) {
@@ -21,5 +26,9 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealthPercentage(float healthPercentage) {
         barFillImage.anchorMax = new Vector2(healthPercentage, barFillImage.anchorMax.y);
+    }
+
+    public void SetVisible(bool visible) {
+        canvasGroup.alpha = visible ? 1 : 0;
     }
 }

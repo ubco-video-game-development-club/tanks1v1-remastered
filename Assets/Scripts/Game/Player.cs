@@ -6,14 +6,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public HealthBar healthBarPrefab;
-    public int maxHealth;
+    public int maxHealth = 30;
+    public float endMatchDelay = 3f;
 
     private HealthBar healthBar;
     private int health;
     private TankController tankController;
+    private SpriteRenderer spriteRenderer;
 
     void Awake() {
         tankController = GetComponent<TankController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     void Start() {
@@ -28,8 +31,10 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
-        Destroy(healthBar.gameObject);
-        Destroy(gameObject);
+        healthBar.SetVisible(false);
+        tankController.Disable();
+        spriteRenderer.enabled = false;
+        StartCoroutine(EndMatch());
     }
 
     private void SetHealth(int health) {
@@ -38,5 +43,10 @@ public class Player : MonoBehaviour
         if (health <= 0) {
             Die();
         }
+    }
+
+    private IEnumerator EndMatch() {
+        yield return new WaitForSeconds(endMatchDelay);
+        GameController.instance.RestartGame();
     }
 }
