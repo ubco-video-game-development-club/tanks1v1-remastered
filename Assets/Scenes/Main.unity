@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 1054926967230137603, guid: d1a8b6f391144f842a425e74a3f16c33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1054926967230137603, guid: d1a8b6f391144f842a425e74a3f16c33,
         type: 3}
@@ -213,6 +213,16 @@ PrefabInstance:
       propertyPath: turnRightKey
       value: 275
       objectReference: {fileID: 0}
+    - target: {fileID: 1054926967230137604, guid: d1a8b6f391144f842a425e74a3f16c33,
+        type: 3}
+      propertyPath: primaryFireKey
+      value: 263
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054926967230137604, guid: d1a8b6f391144f842a425e74a3f16c33,
+        type: 3}
+      propertyPath: secondaryFireKey
+      value: 264
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a8b6f391144f842a425e74a3f16c33, type: 3}
 --- !u!1 &519420028
@@ -268,7 +278,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -313,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 1054926967230137603, guid: d1a8b6f391144f842a425e74a3f16c33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1054926967230137603, guid: d1a8b6f391144f842a425e74a3f16c33,
         type: 3}

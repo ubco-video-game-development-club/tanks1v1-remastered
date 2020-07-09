@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1054926967230137605}
   - component: {fileID: 1054926967230137602}
   - component: {fileID: 1054926967230137604}
+  - component: {fileID: 1054926967145879123}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -30,7 +31,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5472627230790065699}
+  - {fileID: 174426411737762724}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,7 +151,94 @@ MonoBehaviour:
   forwardSpeed: 4
   backwardSpeed: 3
   turnSpeed: 120
+  primaryWeaponPrefab: {fileID: 9055176371422765986, guid: d115b425d3b91a54a9f3450a5a36ddf4,
+    type: 3}
+  primaryWeaponSpawn: {fileID: 5472627230790065699}
+  primaryWeaponSpeed: 7
+  primaryWeaponDamage: 5
+  primaryWeaponCooldown: 0.8
+  secondaryWeaponPrefab: {fileID: 2134295001660113660, guid: ab7630e5e5804414cb6297a16be0db78,
+    type: 3}
+  secondaryWeaponSpawn: {fileID: 174426411737762724}
+  secondaryWeaponSpeed: 7
+  secondaryWeaponDamage: 2
+  secondaryWeaponCooldown: 0.2
   moveForwardKey: 119
   moveBackwardKey: 115
   turnLeftKey: 97
   turnRightKey: 100
+  primaryFireKey: 55
+  secondaryFireKey: 56
+--- !u!114 &1054926967145879123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054926967230137601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c0fed03c9f2da4dbd35350c38edb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+--- !u!1 &6429309293414799194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5472627230790065699}
+  m_Layer: 0
+  m_Name: PrimaryWeaponSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5472627230790065699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429309293414799194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1054926967230137603}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7966224063418888901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174426411737762724}
+  m_Layer: 0
+  m_Name: SecondaryWeaponSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174426411737762724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7966224063418888901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1054926967230137603}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
