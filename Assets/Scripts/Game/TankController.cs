@@ -12,16 +12,8 @@ public class TankController : MonoBehaviour
     public float turnSpeed = 90f;
 
     [Header("Weapons")]
-    public Projectile primaryWeaponPrefab;
-    public Transform primaryWeaponSpawn;
-    public float primaryWeaponSpeed = 7f;
-    public int primaryWeaponDamage = 5;
-    public float primaryWeaponCooldown = 0.8f;
-    public Projectile secondaryWeaponPrefab;
-    public Transform secondaryWeaponSpawn;
-    public float secondaryWeaponSpeed = 7f;
-    public int secondaryWeaponDamage = 2;
-    public float secondaryWeaponCooldown = 0.2f;
+    public TankWeapon primaryWeaponPrefab;
+    public TankWeapon secondaryWeaponPrefab;
 
     [Header("Keybindings")]
     public KeyCode moveForwardKey = KeyCode.W;
@@ -32,14 +24,14 @@ public class TankController : MonoBehaviour
     public KeyCode secondaryFireKey = KeyCode.Alpha8;
 
     private Vector3 facingDirection;
-    private bool isPrimaryWeaponEnabled;
-    private bool isSecondaryWeaponEnabled;
+    private TankWeapon primaryWeapon;
+    private TankWeapon secondaryWeapon;
     private bool isControllerEnabled;
 
     void Start() {
         facingDirection = startDirection.normalized;
-        isPrimaryWeaponEnabled = true;
-        isSecondaryWeaponEnabled = true;
+        primaryWeapon = Instantiate(primaryWeaponPrefab, transform);
+        secondaryWeapon = Instantiate(secondaryWeaponPrefab, transform);
         isControllerEnabled = true;
     }
 
@@ -74,15 +66,11 @@ public class TankController : MonoBehaviour
         transform.position += facingDirection * moveInput * Time.deltaTime;
 
         // Get weapon inputs
-        if (Input.GetKey(primaryFireKey) && isPrimaryWeaponEnabled) {
-            StartCoroutine(PrimaryWeaponCooldown());
-            Projectile primaryWeapon = Instantiate(primaryWeaponPrefab, primaryWeaponSpawn.position, Quaternion.identity);
-            primaryWeapon.Initialize(facingDirection * primaryWeaponSpeed, primaryWeaponDamage);
+        if (Input.GetKey(primaryFireKey)) {
+            primaryWeapon.Fire();
         }
-        if (Input.GetKey(secondaryFireKey) && isSecondaryWeaponEnabled) {
-            StartCoroutine(SecondaryWeaponCooldown());
-            Projectile secondaryWeapon = Instantiate(secondaryWeaponPrefab, secondaryWeaponSpawn.position, Quaternion.identity);
-            secondaryWeapon.Initialize(facingDirection * secondaryWeaponSpeed, secondaryWeaponDamage);
+        if (Input.GetKey(secondaryFireKey)) {
+            secondaryWeapon.Fire();
         }
     }
 
@@ -91,19 +79,11 @@ public class TankController : MonoBehaviour
         transform.rotation = Quaternion.FromToRotation(spriteOrientation, facingDirection);
     }
 
+    public Vector3 GetFacingDirection() {
+        return facingDirection;
+    }
+
     public void Disable() {
         isControllerEnabled = false;
-    }
-
-    private IEnumerator PrimaryWeaponCooldown() {
-        isPrimaryWeaponEnabled = false;
-        yield return new WaitForSeconds(primaryWeaponCooldown);
-        isPrimaryWeaponEnabled = true;
-    }
-
-    private IEnumerator SecondaryWeaponCooldown() {
-        isSecondaryWeaponEnabled = false;
-        yield return new WaitForSeconds(secondaryWeaponCooldown);
-        isSecondaryWeaponEnabled = true;
     }
 }

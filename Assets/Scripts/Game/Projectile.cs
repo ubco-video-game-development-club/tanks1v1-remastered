@@ -6,10 +6,23 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private int damage;
+    private float range;
     private Rigidbody2D rb2D;
+    private Vector2 startPos;
 
     void Awake() {
         rb2D = GetComponent<Rigidbody2D>();
+    }
+
+    void Start() {
+        startPos = transform.position;
+    }
+
+    void Update() {
+        // Destroy self after travelling max range
+        if (Vector2.Distance(startPos, transform.position) > range) {
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col) {
@@ -23,8 +36,9 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialize(Vector2 velocity, int damage) {
-        this.damage = damage;
+    public void Initialize(Vector2 velocity, int damage, float range) {
         rb2D.velocity = velocity;
+        this.damage = damage;
+        this.range = range;
     }
 }
