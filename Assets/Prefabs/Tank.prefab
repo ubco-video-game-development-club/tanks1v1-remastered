@@ -171,4 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c0fed03c9f2da4dbd35350c38edb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 4059843505895431683, guid: f432389d373b8ec42afcd9870ed9eb0a,
+    type: 3}
   maxHealth: 30

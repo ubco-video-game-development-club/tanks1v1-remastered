@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(TankController))]
 public class Player : MonoBehaviour
 {
+    public HealthBar healthBarPrefab;
     public int maxHealth;
 
+    private HealthBar healthBar;
     private int health;
     private TankController tankController;
 
@@ -15,17 +17,26 @@ public class Player : MonoBehaviour
     }
     
     void Start() {
-        health = maxHealth;
+        healthBar = Instantiate(healthBarPrefab, HUD.instance.GetHealthBarParent());
+        healthBar.BindToTarget(transform);
+
+        SetHealth(maxHealth);
     }
 
     public void DamageHealth(int damage) {
-        health -= damage;
-        if (health <= 0) {
-            Die();
-        }
+        SetHealth(health - damage);
     }
 
     public void Die() {
-        tankController.Disable();
+        Destroy(healthBar.gameObject);
+        Destroy(gameObject);
+    }
+
+    private void SetHealth(int health) {
+        this.health = health;
+        healthBar.SetHealthPercentage(((float) health) / maxHealth);
+        if (health <= 0) {
+            Die();
+        }
     }
 }
