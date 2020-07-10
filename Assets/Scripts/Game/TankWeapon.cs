@@ -5,7 +5,8 @@ using UnityEngine;
 public class TankWeapon : MonoBehaviour
 {
     public Projectile projectilePrefab;
-    public Vector2 spawnOffset;
+    public Transform projectileSpawn;
+    public Vector2 spriteOffset;
     public float projectileSpeed = 6f;
     public int projectileDamage = 2;
     public float projectileRange = 10f;
@@ -14,11 +15,16 @@ public class TankWeapon : MonoBehaviour
     public float burstInterval = 0.2f;
 
     private TankController tank;
+    private SpriteRenderer spriteRenderer;
     private bool isWeaponEnabled;
+
+    void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Start() {
         tank = transform.parent.GetComponent<TankController>();
-        transform.position = (Vector2)tank.transform.position + spawnOffset;
+        transform.position = (Vector2)tank.transform.position + spriteOffset;
         isWeaponEnabled = true;
     }
 
@@ -27,6 +33,11 @@ public class TankWeapon : MonoBehaviour
             StartCoroutine(WeaponCooldown());
             StartCoroutine(FireSequence());
         }
+    }
+
+    public void Disable() {
+        spriteRenderer.enabled = false;
+        isWeaponEnabled = false;
     }
 
     private IEnumerator WeaponCooldown() {
@@ -43,7 +54,7 @@ public class TankWeapon : MonoBehaviour
     }
 
     private void ShootProjectile() {
-        Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.Initialize(tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
+        Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
+        projectile.Initialize(tank.GetInstanceID(), tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
     }
 }

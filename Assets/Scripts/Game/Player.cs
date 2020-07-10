@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     private int health;
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider2D;
 
     void Awake() {
         tankController = GetComponent<TankController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
     
     void Start() {
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         healthBar.SetVisible(false);
         tankController.Disable();
         spriteRenderer.enabled = false;
+        boxCollider2D.enabled = false;
         StartCoroutine(EndMatch());
     }
 

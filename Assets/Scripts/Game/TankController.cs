@@ -85,5 +85,7 @@ public class TankController : MonoBehaviour
 
     public void Disable() {
         isControllerEnabled = false;
+        primaryWeapon.Disable();
+        secondaryWeapon.Disable();
     }
 }

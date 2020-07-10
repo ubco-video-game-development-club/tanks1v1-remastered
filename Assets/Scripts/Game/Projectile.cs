@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     private float range;
     private Rigidbody2D rb2D;
     private Vector2 startPos;
+    private int tankID;
 
     void Awake() {
         rb2D = GetComponent<Rigidbody2D>();
@@ -26,6 +27,14 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
+        // Ignore collisions with other projectiles from the same tank
+        Projectile proj;
+        if (col.TryGetComponent<Projectile>(out proj)) {
+            if (proj.tankID == tankID) {
+                return;
+            }
+        }
+
         // Damage the player on hit
         Player player;
         if (col.TryGetComponent<Player>(out player)) {
@@ -36,8 +45,9 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Initialize(Vector2 velocity, int damage, float range) {
+    public void Initialize(int tankID, Vector2 velocity, int damage, float range) {
         rb2D.velocity = velocity;
+        this.tankID = tankID;
         this.damage = damage;
         this.range = range;
     }
