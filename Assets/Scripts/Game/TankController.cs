@@ -23,13 +23,14 @@ public class TankController : MonoBehaviour
     public KeyCode primaryFireKey = KeyCode.Alpha7;
     public KeyCode secondaryFireKey = KeyCode.Alpha8;
 
+    private Quaternion currentRotation;
     private Vector3 facingDirection;
     private TankWeapon primaryWeapon;
     private TankWeapon secondaryWeapon;
     private bool isControllerEnabled;
 
     void Start() {
-        facingDirection = startDirection.normalized;
+        facingDirection = Quaternion.AngleAxis(0.1f, Vector3.forward) * startDirection.normalized;
         primaryWeapon = Instantiate(primaryWeaponPrefab, transform);
         secondaryWeapon = Instantiate(secondaryWeaponPrefab, transform);
         isControllerEnabled = true;
