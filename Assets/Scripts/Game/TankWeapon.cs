@@ -55,6 +55,6 @@ public class TankWeapon : MonoBehaviour
 
     private void ShootProjectile() {
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
-        projectile.Initialize(tank.GetInstanceID(), tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
+        projectile.Initialize(tank.gameObject.GetInstanceID(), tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
     }
 }

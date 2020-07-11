@@ -30,7 +30,15 @@ public class Projectile : MonoBehaviour
         // Ignore collisions with other projectiles from the same tank
         Projectile proj;
         if (col.TryGetComponent<Projectile>(out proj)) {
-            if (proj.tankID == tankID) {
+            if (proj.GetTankID() == tankID) {
+                return;
+            }
+        }
+
+        // Ignore collisions with the original tank
+        TankController tank;
+        if (col.TryGetComponent<TankController>(out tank)) {
+            if (tank.GetTankID() == tankID) {
                 return;
             }
         }
@@ -50,5 +58,9 @@ public class Projectile : MonoBehaviour
         this.tankID = tankID;
         this.damage = damage;
         this.range = range;
+    }
+
+    public int GetTankID() {
+        return tankID;
     }
 }

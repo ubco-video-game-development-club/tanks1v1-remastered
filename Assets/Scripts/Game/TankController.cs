@@ -84,6 +84,10 @@ public class TankController : MonoBehaviour
         return facingDirection;
     }
 
+    public int GetTankID() {
+        return gameObject.GetInstanceID();
+    }
+
     public void Disable() {
         isControllerEnabled = false;
         primaryWeapon.Disable();
