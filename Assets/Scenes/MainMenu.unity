@@ -533,7 +533,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1228,8 +1228,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.86274517, g: 0.22352943, b: 0.34117648, a: 1}
-    m_PressedColor: {r: 0.5529412, g: 0.15294118, b: 0.23137257, a: 1}
+    m_HighlightedColor: {r: 0.85490197, g: 0.19607843, b: 0.30980393, a: 1}
+    m_PressedColor: {r: 0.54901963, g: 0.078431375, b: 0.16078432, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
