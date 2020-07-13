@@ -6,6 +6,7 @@ public class TankWeapon : MonoBehaviour
 {
     public Projectile projectilePrefab;
     public Transform projectileSpawn;
+    public Vector2 projectileSpriteOrientation = Vector2.right;
     public Vector2 spriteOffset;
     public float projectileSpeed = 6f;
     public int projectileDamage = 2;
@@ -54,7 +55,8 @@ public class TankWeapon : MonoBehaviour
     }
 
     private void ShootProjectile() {
-        Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, Quaternion.identity);
+        Quaternion projectileRotation = Quaternion.FromToRotation(projectileSpriteOrientation, tank.GetFacingDirection());
+        Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, projectileRotation);
         projectile.Initialize(tank.gameObject.GetInstanceID(), tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
     }
 }
