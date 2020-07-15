@@ -30,7 +30,7 @@ public class TankController : MonoBehaviour
     private bool isControllerEnabled;
 
     void Start() {
-        facingDirection = Quaternion.AngleAxis(0.1f, Vector3.forward) * startDirection.normalized;
+        facingDirection = startDirection.normalized;
         primaryWeapon = Instantiate(primaryWeaponPrefab, transform);
         secondaryWeapon = Instantiate(secondaryWeaponPrefab, transform);
         isControllerEnabled = true;
@@ -77,7 +77,8 @@ public class TankController : MonoBehaviour
 
     void FixedUpdate() {
         // Rotate to face current direction
-        transform.rotation = Quaternion.FromToRotation(spriteOrientation, facingDirection);
+        float facingAngle = Vector2.SignedAngle(spriteOrientation, facingDirection);
+        transform.rotation = Quaternion.AngleAxis(facingAngle, Vector3.forward);
     }
 
     public Vector3 GetFacingDirection() {

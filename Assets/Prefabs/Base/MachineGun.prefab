@@ -102,7 +102,7 @@ MonoBehaviour:
   projectileSpeed: 10
   projectileDamage: 2
   projectileRange: 10
-  cooldown: 1.4
+  cooldown: 1
   burstCount: 5
   burstInterval: 0.1
 --- !u!1 &2944424325996915638
