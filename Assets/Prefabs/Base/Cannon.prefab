@@ -95,10 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92884da4270cfd48a080c79da00d7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Cannon
+  spriteOffset: {x: 0, y: 0}
   projectilePrefab: {fileID: 0}
   projectileSpawn: {fileID: 8855025572344733831}
   projectileSpriteOrientation: {x: 1, y: 0}
-  spriteOffset: {x: 0, y: 0}
+  projectileName: Bullet
   projectileSpeed: 8
   projectileDamage: 5
   projectileRange: 40

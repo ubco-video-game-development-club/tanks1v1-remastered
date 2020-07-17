@@ -6,11 +6,13 @@ using TMPro;
 [RequireComponent(typeof(TankController))]
 public class Player : MonoBehaviour
 {
+    public string playerName = "Player";
     public HealthBar healthBarPrefab;
     public int maxHealth = 30;
     public float endMatchDelay = 3f;
 
     private HealthBar healthBar;
+    private PlayerStats playerStats;
     private int health;
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TextMeshProUGUI restartTime;
     [SerializeField] private TextMeshProUGUI playerWinText;
-    [SerializeField] private TextMeshProUGUI playerStats;
+    [SerializeField] private TextMeshProUGUI statsDisplay;
 
     void Awake() {
         tankController = GetComponent<TankController>();
@@ -28,9 +30,9 @@ public class Player : MonoBehaviour
     }
     
     void Start() {
+        playerStats.playerName = playerName;
         healthBar = Instantiate(healthBarPrefab, HUD.instance.GetHealthBarParent());
         healthBar.BindToTarget(transform);
-
         SetHealth(maxHealth);
     }
 
@@ -39,6 +41,10 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
+        playerStats.healthRemaining = health;
+        playerStats.distanceTravelled = tankController.GetDistanceTravelled();
+        playerStats.primaryWeaponStats = tankController.GetPrimaryWeaponStats();
+        playerStats.secondaryWeaponStats = tankController.GetSecondaryWeaponStats();
         healthBar.SetVisible(false);
         tankController.Disable();
         spriteRenderer.enabled = false;
@@ -69,7 +75,7 @@ public class Player : MonoBehaviour
         playerWinText.text = "Player " + "#" + " wins!!!";
         string healthRemaining = "Health Remaining: ";
         string bulletsFired = "Bullets Fired: ";
-        playerStats.text = "Player1:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
+        statsDisplay.text = "Player1:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
         //player2Stats.text = "Player2:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
     }
 }

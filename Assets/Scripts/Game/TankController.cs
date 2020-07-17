@@ -23,11 +23,11 @@ public class TankController : MonoBehaviour
     public KeyCode primaryFireKey = KeyCode.Alpha7;
     public KeyCode secondaryFireKey = KeyCode.Alpha8;
 
-    private Quaternion currentRotation;
     private Vector3 facingDirection;
     private TankWeapon primaryWeapon;
     private TankWeapon secondaryWeapon;
     private bool isControllerEnabled;
+    private float distanceTravelled;
 
     void Start() {
         facingDirection = startDirection.normalized;
@@ -65,6 +65,7 @@ public class TankController : MonoBehaviour
 
         // Apply movement
         transform.position += facingDirection * moveInput * Time.deltaTime;
+        distanceTravelled += moveInput * Time.deltaTime;
 
         // Get weapon inputs
         if (Input.GetKey(primaryFireKey)) {
@@ -93,5 +94,17 @@ public class TankController : MonoBehaviour
         isControllerEnabled = false;
         primaryWeapon.Disable();
         secondaryWeapon.Disable();
+    }
+
+    public float GetDistanceTravelled() {
+        return distanceTravelled;
+    }
+
+    public WeaponStats GetPrimaryWeaponStats() {
+        return primaryWeapon.GetWeaponStats();
+    }
+
+    public WeaponStats GetSecondaryWeaponStats() {
+        return secondaryWeapon.GetWeaponStats();
     }
 }

@@ -13279,6 +13279,11 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1508733162}
+    - target: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+        type: 3}
+      propertyPath: playerName
+      value: Red Tank
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d29a999d50979428ec674b82056009, type: 3}
 --- !u!1 &1661278153
@@ -13428,7 +13433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1763448370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14023,6 +14028,11 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 655899223}
+    - target: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+        type: 3}
+      propertyPath: playerName
+      value: Blue Tank
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d29a999d50979428ec674b82056009, type: 3}
 --- !u!1 &2027646317
