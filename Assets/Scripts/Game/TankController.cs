@@ -38,7 +38,7 @@ public class TankController : MonoBehaviour
 
     void Update() {
         // Don't allow inputs if disabled
-        if (!isControllerEnabled) {
+        if (!isControllerEnabled || Time.timeScale == 0) {
             return;
         }
 

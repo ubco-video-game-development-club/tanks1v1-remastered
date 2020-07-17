@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(TankController))]
 public class Player : MonoBehaviour
@@ -14,6 +15,11 @@ public class Player : MonoBehaviour
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
+
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private TextMeshProUGUI restartTime;
+    [SerializeField] private TextMeshProUGUI playerWinText;
+    [SerializeField] private TextMeshProUGUI playerStats;
 
     void Awake() {
         tankController = GetComponent<TankController>();
@@ -49,7 +55,21 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator EndMatch() {
+        GameOverScreen();
         yield return new WaitForSeconds(endMatchDelay);
+        gameOverUI.SetActive(false);
         GameController.instance.RestartGame();
+    }
+
+    //Game Over code
+    private void GameOverScreen() {
+        gameOverUI.SetActive(true);
+        
+        restartTime.text = "Restarting game in " + endMatchDelay + " seconds";
+        playerWinText.text = "Player " + "#" + " wins!!!";
+        string healthRemaining = "Health Remaining: ";
+        string bulletsFired = "Bullets Fired: ";
+        playerStats.text = "Player1:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
+        //player2Stats.text = "Player2:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
     }
 }
