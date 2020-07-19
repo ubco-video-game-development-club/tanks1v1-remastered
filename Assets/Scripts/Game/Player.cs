@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     }
     
     void Start() {
+        playerStats = new PlayerStats();
         playerStats.playerName = playerName;
         healthBar = Instantiate(healthBarPrefab, HUD.instance.GetHealthBarParent());
         healthBar.BindToTarget(transform);
@@ -56,6 +57,4 @@ public class Player : MonoBehaviour
             Die();
         }
     }
-
-
 }

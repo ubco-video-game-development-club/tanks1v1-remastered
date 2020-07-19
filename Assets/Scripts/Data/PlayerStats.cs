@@ -5,4 +5,9 @@
     public float distanceTravelled;
     public WeaponStats primaryWeaponStats;
     public WeaponStats secondaryWeaponStats;
+
+    public PlayerStats() {
+        primaryWeaponStats = new WeaponStats();
+        secondaryWeaponStats = new WeaponStats();
+    }
 }
