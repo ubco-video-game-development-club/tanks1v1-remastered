@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public string playerName = "Player";
     public HealthBar healthBarPrefab;
     public int maxHealth = 30;
-    public float endMatchDelay = 3f;
     public StatsDisplay statsDisplay;
 
     private HealthBar healthBar;
@@ -18,6 +17,7 @@ public class Player : MonoBehaviour
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
+    private bool isGameOver = false;
     
     void Awake() {
         tankController = GetComponent<TankController>();
@@ -38,23 +38,35 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
-        playerStats.healthRemaining = health;
-        playerStats.distanceTravelled = tankController.GetDistanceTravelled();
-        playerStats.primaryWeaponStats = tankController.GetPrimaryWeaponStats();
-        playerStats.secondaryWeaponStats = tankController.GetSecondaryWeaponStats();
         healthBar.SetVisible(false);
         tankController.Disable();
         spriteRenderer.enabled = false;
         boxCollider2D.enabled = false;
-        //StartCoroutine(EndMatch());
         GameController.instance.EndGame();
     }
 
     private void SetHealth(int health) {
+        if (isGameOver) {
+            return;
+        }
+
         this.health = health;
         healthBar.SetHealthPercentage(((float) health) / maxHealth);
+
         if (health <= 0) {
             Die();
         }
+    }
+
+    public bool EndGame() {
+        isGameOver = true;
+
+        playerStats.healthRemaining = health;
+        playerStats.distanceTravelled = tankController.GetDistanceTravelled();
+        playerStats.primaryWeaponStats = tankController.GetPrimaryWeaponStats();
+        playerStats.secondaryWeaponStats = tankController.GetSecondaryWeaponStats();
+
+        statsDisplay.SetStats(playerStats);
+        return health > 0;
     }
 }

@@ -8,18 +8,13 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    public float endDelay = 3f;
     public KeyCode restartGameKey = KeyCode.Space;
-
+    public KeyCode pauseGameKey = KeyCode.Escape;
     public Player player1;
     public Player player2;
-    public PlayerStats stats;
-    public WeaponStats wStats;
 
-    public GameObject gameOverUI;
-    public TextMeshProUGUI restartTime;
-    public TextMeshProUGUI playerWinText;
-    public TextMeshProUGUI statsDisplay1;
-    public TextMeshProUGUI statsDisplay2;
+    private bool isPaused = false;
 
     void Awake() {
         if (instance != null) {
@@ -33,36 +28,71 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(restartGameKey)) {
             RestartGame();
         }
+
+        if (Input.GetKeyDown(pauseGameKey)) {
+
+            if (isPaused) {
+                ResumeGame();
+            }
+
+            else {
+                PauseGame();
+            }
+        }
+    }
+
+    public void ResumeGame() {
+        //Resume Game Steps:
+        // 1) Close Pause Menu
+        // 2) Start/Continue Gameplay (Usually by setting timescale to 1)
+
+        isPaused = false;
+        Time.timeScale = 1f;
+        //pauseMenuUI.SetActive(false);
+        HUD.instance.SetPauseMenuActive(false);
+    }
+
+    public void PauseGame() {
+        //Pause Game Steps:
+        // 1) Pause Gameplay (Usually by setting timescale to 0)
+        // 2) Open Pause Menu
+
+        isPaused = true;
+        Time.timeScale = 0f;
+        //pauseMenuUI.SetActive(true);
+        HUD.instance.SetPauseMenuActive(true);
     }
 
     public void RestartGame() {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        isPaused = false;
     }
 
-    private IEnumerator EndMatch() {
-        GameOverScreen();
-        yield return new WaitForSeconds(player1.endMatchDelay);
-        gameOverUI.SetActive(false);
-        instance.RestartGame();
+    public void BackToMainMenu() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+        isPaused = false;
+    }
+
+    //Delay end screen for x amount of seconds and shows player stats
+    private IEnumerator DelayEndScreen() {
+        yield return new WaitForSeconds(endDelay);
+        HUD.instance.SetGameOverMenuActive(true);
     }
 
     public void EndGame() {
-        StartCoroutine(EndMatch());
+        StartCoroutine(DelayEndScreen());
+        bool isPlayer1Alive = player1.EndGame();
+        bool isPlayer2Alive = player2.EndGame();
+
+        if (isPlayer1Alive) {
+            HUD.instance.SetWinner(player1.name);
+        }
+        else if(isPlayer2Alive) {
+            HUD.instance.SetWinner(player2.name);
+        }
     }
-
-    private void GameOverScreen() {
-        gameOverUI.SetActive(true);
-
-        restartTime.text = "Restarting game in " + player1.endMatchDelay + " seconds";
-        playerWinText.text = stats.playerName + " wins!!!";
-        string healthRemaining = "Health Remaining: " + stats.healthRemaining.ToString();
-        string distanceTravelled = "Distance travelled" + stats.distanceTravelled.ToString();
-        string primaryBulletsFired = "Primary Bullets Fired: " + wStats.projectilesFired.ToString();
-        string secondaryBulletsFired = "Secondary Bullets Fired: " + wStats.projectilesFired.ToString();
-
-        statsDisplay1.text = "Player1\n" + healthRemaining + "\n" + distanceTravelled + "\n" + primaryBulletsFired + "\n" + secondaryBulletsFired;
-
-        statsDisplay2.text = "Player2\n" + healthRemaining + "\n" + distanceTravelled + "\n" + primaryBulletsFired + "\n" + secondaryBulletsFired; ;
-        //player2Stats.text = "Player2:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
-    }
+    
+    
 }
