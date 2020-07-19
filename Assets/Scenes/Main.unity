@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &209741386 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983954385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c0fed03c9f2da4dbd35350c38edb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &325371804
 GameObject:
   m_ObjectHideFlags: 0
@@ -11176,6 +11188,7 @@ GameObject:
   - component: {fileID: 655899222}
   - component: {fileID: 655899224}
   - component: {fileID: 655899223}
+  - component: {fileID: 655899225}
   m_Layer: 5
   m_Name: Player Two Stats
   m_TagString: Untagged
@@ -11199,8 +11212,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 211, y: -65}
-  m_SizeDelta: {x: 374.12286, y: 95.934235}
+  m_AnchoredPosition: {x: 211, y: -70}
+  m_SizeDelta: {x: 374.12286, y: 140.8003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655899223
 MonoBehaviour:
@@ -11221,11 +11234,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Player 2:
+  m_text: 'Player 2
 
     Health Remaining:
 
-    Bullets fired:'
+    Distance Travelled:
+
+    Primary
+    Bullets fired:
+
+    Secondary Bullets fired:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11253,8 +11271,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 22.5
+  m_fontSizeBase: 22.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11294,12 +11312,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 655899223}
-    characterCount: 42
+    characterCount: 94
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 6
+    spaceCount: 11
+    wordCount: 12
     linkCount: 0
-    lineCount: 3
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -11325,6 +11343,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655899221}
   m_CullTransparentMesh: 0
+--- !u!114 &655899225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655899221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ae9676cd2f604497e730f72933758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &699770396
 GameObject:
   m_ObjectHideFlags: 0
@@ -11359,7 +11389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 32}
+  m_AnchoredPosition: {x: 0, y: 48.56501}
   m_SizeDelta: {x: 390.1466, y: 47.864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699770398
@@ -11409,8 +11439,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 22.5
+  m_fontSizeBase: 22.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12362,8 +12392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 171}
-  m_SizeDelta: {x: 458.51367, y: 79.91077}
+  m_AnchoredPosition: {x: 0, y: 183}
+  m_SizeDelta: {x: 435.01233, y: 69.228455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1016948646
 MonoBehaviour:
@@ -12412,8 +12442,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12675,6 +12705,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339632388}
   m_CullTransparentMesh: 0
+--- !u!114 &1400483672 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1524770700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c0fed03c9f2da4dbd35350c38edb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482253134
 GameObject:
   m_ObjectHideFlags: 0
@@ -12711,7 +12753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -152}
+  m_AnchoredPosition: {x: 0, y: -188}
   m_SizeDelta: {x: 411.51135, y: 44.955315}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482253136
@@ -12849,6 +12891,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartGameKey: 32
+  player1: {fileID: 1400483672}
+  player2: {fileID: 209741386}
+  gameOverUI: {fileID: 1763448369}
+  restartTime: {fileID: 699770398}
+  playerWinText: {fileID: 943498215}
+  statsDisplay1: {fileID: 1508733162}
+  statsDisplay2: {fileID: 655899223}
 --- !u!1 &1489551007
 GameObject:
   m_ObjectHideFlags: 0
@@ -12990,6 +13039,7 @@ GameObject:
   - component: {fileID: 1508733161}
   - component: {fileID: 1508733163}
   - component: {fileID: 1508733162}
+  - component: {fileID: 1508733164}
   m_Layer: 5
   m_Name: Player One Stats
   m_TagString: Untagged
@@ -13013,8 +13063,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -211, y: -65}
-  m_SizeDelta: {x: 374.12286, y: 95.934235}
+  m_AnchoredPosition: {x: -211, y: -70}
+  m_SizeDelta: {x: 374.12286, y: 140.8003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508733162
 MonoBehaviour:
@@ -13035,11 +13085,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Player 1:
+  m_text: 'Player 1
 
     Health Remaining:
 
-    Bullets fired:'
+    Distance Travelled:
+
+    Primary
+    Bullets fired:
+
+    Secondary Bullets fired:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13067,8 +13122,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 22.5
+  m_fontSizeBase: 22.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13108,12 +13163,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1508733162}
-    characterCount: 42
+    characterCount: 94
     spriteCount: 0
-    spaceCount: 5
-    wordCount: 6
+    spaceCount: 11
+    wordCount: 12
     linkCount: 0
-    lineCount: 3
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -13139,6 +13194,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508733160}
   m_CullTransparentMesh: 0
+--- !u!114 &1508733164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508733160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ae9676cd2f604497e730f72933758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1524770700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13284,6 +13351,11 @@ PrefabInstance:
       propertyPath: playerName
       value: Red Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+        type: 3}
+      propertyPath: statsDisplay
+      value: 
+      objectReference: {fileID: 1508733164}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d29a999d50979428ec674b82056009, type: 3}
 --- !u!1 &1661278153
@@ -13433,7 +13505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1763448370
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14033,6 +14105,11 @@ PrefabInstance:
       propertyPath: playerName
       value: Blue Tank
       objectReference: {fileID: 0}
+    - target: {fileID: 3821826031494273061, guid: c2d29a999d50979428ec674b82056009,
+        type: 3}
+      propertyPath: statsDisplay
+      value: 
+      objectReference: {fileID: 655899225}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d29a999d50979428ec674b82056009, type: 3}
 --- !u!1 &2027646317

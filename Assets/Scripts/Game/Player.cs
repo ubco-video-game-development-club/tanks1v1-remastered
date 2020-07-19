@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public HealthBar healthBarPrefab;
     public int maxHealth = 30;
     public float endMatchDelay = 3f;
+    public StatsDisplay statsDisplay;
 
     private HealthBar healthBar;
     private PlayerStats playerStats;
@@ -17,12 +18,7 @@ public class Player : MonoBehaviour
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
-
-    [SerializeField] private GameObject gameOverUI;
-    [SerializeField] private TextMeshProUGUI restartTime;
-    [SerializeField] private TextMeshProUGUI playerWinText;
-    [SerializeField] private TextMeshProUGUI statsDisplay;
-
+    
     void Awake() {
         tankController = GetComponent<TankController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -49,7 +45,8 @@ public class Player : MonoBehaviour
         tankController.Disable();
         spriteRenderer.enabled = false;
         boxCollider2D.enabled = false;
-        StartCoroutine(EndMatch());
+        //StartCoroutine(EndMatch());
+        GameController.instance.EndGame();
     }
 
     private void SetHealth(int health) {
@@ -60,22 +57,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator EndMatch() {
-        GameOverScreen();
-        yield return new WaitForSeconds(endMatchDelay);
-        gameOverUI.SetActive(false);
-        GameController.instance.RestartGame();
-    }
 
-    //Game Over code
-    private void GameOverScreen() {
-        gameOverUI.SetActive(true);
-        
-        restartTime.text = "Restarting game in " + endMatchDelay + " seconds";
-        playerWinText.text = "Player " + "#" + " wins!!!";
-        string healthRemaining = "Health Remaining: ";
-        string bulletsFired = "Bullets Fired: ";
-        statsDisplay.text = "Player1:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
-        //player2Stats.text = "Player2:\n" + healthRemaining + health.ToString() + "\n" + bulletsFired;
-    }
 }
