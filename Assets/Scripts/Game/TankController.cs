@@ -10,6 +10,8 @@ public class TankController : MonoBehaviour
     public float forwardSpeed = 4f;
     public float backwardSpeed = 4f;
     public float turnSpeed = 90f;
+    public AudioClip idleSound;
+    public AudioClip moveSound;
 
     [Header("Weapons")]
     public TankWeapon primaryWeaponPrefab;
@@ -28,12 +30,19 @@ public class TankController : MonoBehaviour
     private TankWeapon secondaryWeapon;
     private bool isControllerEnabled;
     private float distanceTravelled;
+    private AudioSource audioSource;
+    private bool isMoving;
+
+    void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Start() {
         facingDirection = startDirection.normalized;
         primaryWeapon = Instantiate(primaryWeaponPrefab, transform);
         secondaryWeapon = Instantiate(secondaryWeaponPrefab, transform);
         isControllerEnabled = true;
+        isMoving = false;
     }
 
     void Update() {
@@ -66,6 +75,15 @@ public class TankController : MonoBehaviour
         // Apply movement
         transform.position += facingDirection * moveInput * Time.deltaTime;
         distanceTravelled += moveInput * Time.deltaTime;
+
+        // Play movement sounds
+        if (!isMoving && moveInput != 0) {
+            isMoving = true;
+            SetActiveSound(moveSound);
+        } else if (isMoving && moveInput == 0) {
+            isMoving = false;
+            SetActiveSound(idleSound);
+        }
 
         // Get weapon inputs
         if (Input.GetKey(primaryFireKey)) {
@@ -106,5 +124,10 @@ public class TankController : MonoBehaviour
 
     public WeaponStats GetSecondaryWeaponStats() {
         return secondaryWeapon.GetWeaponStats();
+    }
+
+    private void SetActiveSound(AudioClip clip) {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }

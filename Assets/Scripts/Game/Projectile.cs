@@ -5,14 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Projectile : MonoBehaviour
 {
-    private int damage;
-    private float range;
+    public string projectileName = "Projectile";
+    public float speed = 6f;
+    public int damage = 2;
+    public float range = 10f;
+    public AudioClip hitSound;
+
     private Rigidbody2D rb2D;
+    private AudioSource audioSource;
+    private SpriteRenderer spriteRenderer;
     private Vector2 startPos;
     private int tankID;
+    private bool destroyed;
 
     void Awake() {
         rb2D = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start() {
@@ -27,6 +36,11 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
+        // Ignore collisions if the projectile is already destroyed
+        if (destroyed) {
+            return;
+        }
+
         // Ignore collisions with other projectiles from the same tank
         Projectile proj;
         if (col.TryGetComponent<Projectile>(out proj)) {
@@ -49,15 +63,18 @@ public class Projectile : MonoBehaviour
             player.DamageHealth(damage);
         }
 
-        // Destroy self on collision
-        Destroy(gameObject);
+        // Play audio clip on hit
+        audioSource.PlayOneShot(hitSound);
+
+        // Hide the object on collision and destroy after 3 seconds
+        spriteRenderer.enabled = false;
+        destroyed = true;
+        Destroy(gameObject, 3f);
     }
 
-    public void Initialize(int tankID, Vector2 velocity, int damage, float range) {
-        rb2D.velocity = velocity;
+    public void Initialize(int tankID, Vector2 direction) {
         this.tankID = tankID;
-        this.damage = damage;
-        this.range = range;
+        rb2D.velocity = direction * speed;
     }
 
     public int GetTankID() {

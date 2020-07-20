@@ -9,28 +9,27 @@ public class TankWeapon : MonoBehaviour
     public Projectile projectilePrefab;
     public Transform projectileSpawn;
     public Vector2 projectileSpriteOrientation = Vector2.right;
-    public string projectileName = "Projectile";
-    public float projectileSpeed = 6f;
-    public int projectileDamage = 2;
-    public float projectileRange = 10f;
     public float cooldown = 1f;
     public int burstCount = 5;
     public float burstInterval = 0.2f;
+    public AudioClip fireSound;
 
     private TankController tank;
     private SpriteRenderer spriteRenderer;
+    private AudioSource audioSource;
     private bool isWeaponEnabled;
     private WeaponStats weaponStats;
 
     void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start() {
         // Initialize weapon stats
         weaponStats = new WeaponStats();
         weaponStats.weaponName = weaponName;
-        weaponStats.projectileName = projectileName;
+        weaponStats.projectileName = projectilePrefab.name;
         weaponStats.projectilesFired = 0;
 
         tank = transform.parent.GetComponent<TankController>();
@@ -70,7 +69,8 @@ public class TankWeapon : MonoBehaviour
     private void ShootProjectile() {
         Quaternion projectileRotation = Quaternion.FromToRotation(projectileSpriteOrientation, tank.GetFacingDirection());
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawn.position, projectileRotation);
-        projectile.Initialize(tank.gameObject.GetInstanceID(), tank.GetFacingDirection() * projectileSpeed, projectileDamage, projectileRange);
+        projectile.Initialize(tank.gameObject.GetInstanceID(), tank.GetFacingDirection());
+        audioSource.PlayOneShot(fireSound);
         weaponStats.projectilesFired++;
     }
 }
