@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391, y: 329}
+  m_AnchoredPosition: {x: -391, y: 312}
   m_SizeDelta: {x: 854, y: 205.80063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402427584
@@ -494,8 +494,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tanks1v1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdb302559d78edf4fa3598d2756ff7a9, type: 2}
+  m_sharedMaterial: {fileID: 8177288347019871301, guid: fdb302559d78edf4fa3598d2756ff7a9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -537,7 +538,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -852,7 +853,7 @@ GameObject:
   - component: {fileID: 1019405086}
   - component: {fileID: 1019405085}
   m_Layer: 5
-  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_Name: TMP SubMeshUI [gunplay rg 1024 SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -971,8 +972,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: QUIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdb302559d78edf4fa3598d2756ff7a9, type: 2}
+  m_sharedMaterial: {fileID: 8177288347019871301, guid: fdb302559d78edf4fa3598d2756ff7a9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1103,8 +1105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -357}
-  m_SizeDelta: {x: 757.2247, y: 66.15155}
+  m_AnchoredPosition: {x: 0, y: -376}
+  m_SizeDelta: {x: 789.16693, y: 79.841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120660477
 MonoBehaviour:
@@ -1127,8 +1129,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Click anywhere to close
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba310e4db4304e44aa03c31262d5ead6, type: 2}
+  m_sharedMaterial: {fileID: -3719446780681692980, guid: ba310e4db4304e44aa03c31262d5ead6,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1153,8 +1156,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1260,8 +1263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 11}
-  m_SizeDelta: {x: 942.96594, y: 502.24048}
+  m_AnchoredPosition: {x: 0, y: -0}
+  m_SizeDelta: {x: 1136.4236, y: 628.629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139875474
 MonoBehaviour:
@@ -1285,11 +1288,13 @@ MonoBehaviour:
   m_text: "The goal of this game is simple : 2 tanks controlled by players on a single
     keyboard. Fight to the DEATH!!!\n\nPlayer 1 uses WASD keys to move\nPlayer 2
     uses \u2191\u2190\u2193\u2192 keys to move\n\nPlayer 1 uses numeric 7 or 8 to
-    shoot\nPlayer 2 uses numeric keypad 7 or 8 to shoot\n\n7 shoots one large bullet
-    and 8 shoots 5 smaller bullets\n\nLower your enemy tank's health to zero to win!"
+    shoot\nPlayer 2 uses numeric keypad 7 or 8 to shoot\n\n7 shoots one cannon bullet
+    \n8 shoots five machine gun bullets\n\nLower your enemy tank's health to zero
+    to win!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba310e4db4304e44aa03c31262d5ead6, type: 2}
+  m_sharedMaterial: {fileID: -3719446780681692980, guid: ba310e4db4304e44aa03c31262d5ead6,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1314,8 +1319,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1355,12 +1360,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1139875474}
-    characterCount: 362
+    characterCount: 367
     spriteCount: 0
-    spaceCount: 77
+    spaceCount: 78
     wordCount: 72
     linkCount: 0
-    lineCount: 12
+    lineCount: 13
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -1444,8 +1449,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: INSTRUCTIONS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdb302559d78edf4fa3598d2756ff7a9, type: 2}
+  m_sharedMaterial: {fileID: 8177288347019871301, guid: fdb302559d78edf4fa3598d2756ff7a9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1576,8 +1582,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 342}
-  m_SizeDelta: {x: 494.7638, y: 130.75708}
+  m_AnchoredPosition: {x: 0, y: 369}
+  m_SizeDelta: {x: 435.443, y: 96.43913}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484137145
 MonoBehaviour:
@@ -1600,8 +1606,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: INSTRUCTIONS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 32d642a1b6f38d842a3d6d8b7a76c24e, type: 2}
+  m_sharedMaterial: {fileID: 8391384314670197745, guid: 32d642a1b6f38d842a3d6d8b7a76c24e,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1632,7 +1639,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1968,8 +1975,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdb302559d78edf4fa3598d2756ff7a9, type: 2}
+  m_sharedMaterial: {fileID: 8177288347019871301, guid: fdb302559d78edf4fa3598d2756ff7a9,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
