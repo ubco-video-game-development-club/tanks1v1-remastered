@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2731156476987124997}
   - component: {fileID: 5641687316413607374}
   - component: {fileID: 6409649309325004726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MachineGunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b6cb328a39cb74cb95eeae3a7c0b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileName: Projectile
+  projectileName: Bullet
   speed: 10
   damage: 2
   range: 10

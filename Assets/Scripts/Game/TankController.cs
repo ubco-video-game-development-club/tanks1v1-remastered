@@ -43,6 +43,7 @@ public class TankController : MonoBehaviour
         secondaryWeapon = Instantiate(secondaryWeaponPrefab, transform);
         isControllerEnabled = true;
         isMoving = false;
+        SetActiveSound(idleSound);
     }
 
     void Update() {

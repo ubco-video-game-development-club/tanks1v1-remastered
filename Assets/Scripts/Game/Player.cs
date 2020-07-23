@@ -45,19 +45,6 @@ public class Player : MonoBehaviour
         GameController.instance.EndGame();
     }
 
-    private void SetHealth(int health) {
-        if (isGameOver) {
-            return;
-        }
-
-        this.health = health;
-        healthBar.SetHealthPercentage(((float) health) / maxHealth);
-
-        if (health <= 0) {
-            Die();
-        }
-    }
-
     public bool EndGame() {
         isGameOver = true;
 
@@ -68,5 +55,19 @@ public class Player : MonoBehaviour
 
         statsDisplay.SetStats(playerStats);
         return health > 0;
+    }
+
+    private void SetHealth(int health) {
+        if (isGameOver) {
+            return;
+        }
+
+        this.health = health;
+        healthBar.SetHealthPercentage(((float) health) / maxHealth);
+
+        if (health <= 0) {
+            health = 0;
+            Die();
+        }
     }
 }

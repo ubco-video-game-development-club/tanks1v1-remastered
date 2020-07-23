@@ -29,7 +29,7 @@ public class TankWeapon : MonoBehaviour
         // Initialize weapon stats
         weaponStats = new WeaponStats();
         weaponStats.weaponName = weaponName;
-        weaponStats.projectileName = projectilePrefab.name;
+        weaponStats.projectileName = projectilePrefab.projectileName;
         weaponStats.projectilesFired = 0;
 
         tank = transform.parent.GetComponent<TankController>();

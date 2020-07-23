@@ -66,10 +66,11 @@ public class Projectile : MonoBehaviour
         // Play audio clip on hit
         audioSource.PlayOneShot(hitSound);
 
-        // Hide the object on collision and destroy after 3 seconds
+        // Hide the object on collision and destroy after 1 second
         spriteRenderer.enabled = false;
+        rb2D.velocity = Vector2.zero;
         destroyed = true;
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1f);
     }
 
     public void Initialize(int tankID, Vector2 direction) {
