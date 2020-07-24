@@ -16,8 +16,6 @@ public class Barrel : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("Yo");
-
         if (destroyed) {
             return;
         }

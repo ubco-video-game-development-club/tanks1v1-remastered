@@ -24,18 +24,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void Start() {
+        MusicPlayer.instance.SetGameVolume();
+    }
+
     void Update() {
         if (Input.GetKeyDown(restartGameKey)) {
             RestartGame();
         }
 
         if (Input.GetKeyDown(pauseGameKey)) {
-
             if (isPaused) {
                 ResumeGame();
-            }
-
-            else {
+            } else {
                 PauseGame();
             }
         }
@@ -48,7 +49,7 @@ public class GameController : MonoBehaviour
 
         isPaused = false;
         Time.timeScale = 1f;
-        //pauseMenuUI.SetActive(false);
+        MusicPlayer.instance.SetGameVolume();
         HUD.instance.SetPauseMenuActive(false);
     }
 
@@ -59,18 +60,20 @@ public class GameController : MonoBehaviour
 
         isPaused = true;
         Time.timeScale = 0f;
-        //pauseMenuUI.SetActive(true);
+        MusicPlayer.instance.SetMenuVolume();
         HUD.instance.SetPauseMenuActive(true);
     }
 
     public void RestartGame() {
         Time.timeScale = 1f;
+        MusicPlayer.instance.SetGameVolume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         isPaused = false;
     }
 
     public void BackToMainMenu() {
         Time.timeScale = 1f;
+        MusicPlayer.instance.SetMenuVolume();
         SceneManager.LoadScene("MainMenu");
         isPaused = false;
     }
@@ -78,18 +81,20 @@ public class GameController : MonoBehaviour
     //Delay end screen for x amount of seconds and shows player stats
     private IEnumerator DelayEndScreen() {
         yield return new WaitForSeconds(endDelay);
+        player1.Disable();
+        player2.Disable();
+        MusicPlayer.instance.SetMenuVolume();
         HUD.instance.SetGameOverMenuActive(true);
     }
 
     public void EndGame() {
         StartCoroutine(DelayEndScreen());
+
         bool isPlayer1Alive = player1.EndGame();
         bool isPlayer2Alive = player2.EndGame();
-
         if (isPlayer1Alive) {
             HUD.instance.SetWinner(player1.name);
-        }
-        else if(isPlayer2Alive) {
+        } else if(isPlayer2Alive) {
             HUD.instance.SetWinner(player2.name);
         }
     }

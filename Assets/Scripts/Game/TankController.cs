@@ -25,15 +25,17 @@ public class TankController : MonoBehaviour
     public KeyCode primaryFireKey = KeyCode.Alpha7;
     public KeyCode secondaryFireKey = KeyCode.Alpha8;
 
-    private Vector3 facingDirection;
+    private Vector2 facingDirection;
     private TankWeapon primaryWeapon;
     private TankWeapon secondaryWeapon;
     private bool isControllerEnabled;
     private float distanceTravelled;
+    private Rigidbody2D rb2D;
     private AudioSource audioSource;
     private bool isMoving;
 
     void Awake() {
+        rb2D = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -47,6 +49,21 @@ public class TankController : MonoBehaviour
     }
 
     void Update() {
+        // Don't allow inputs if disabled
+        if (!isControllerEnabled || Time.timeScale == 0) {
+            return;
+        }
+
+        // Get weapon inputs
+        if (Input.GetKey(primaryFireKey)) {
+            primaryWeapon.Fire();
+        }
+        if (Input.GetKey(secondaryFireKey)) {
+            secondaryWeapon.Fire();
+        }
+    }
+
+    void FixedUpdate() {
         // Don't allow inputs if disabled
         if (!isControllerEnabled || Time.timeScale == 0) {
             return;
@@ -74,7 +91,7 @@ public class TankController : MonoBehaviour
         }
 
         // Apply movement
-        transform.position += facingDirection * moveInput * Time.deltaTime;
+        rb2D.position += facingDirection * moveInput * Time.deltaTime;
         distanceTravelled += moveInput * Time.deltaTime;
 
         // Play movement sounds
@@ -86,16 +103,6 @@ public class TankController : MonoBehaviour
             SetActiveSound(idleSound);
         }
 
-        // Get weapon inputs
-        if (Input.GetKey(primaryFireKey)) {
-            primaryWeapon.Fire();
-        }
-        if (Input.GetKey(secondaryFireKey)) {
-            secondaryWeapon.Fire();
-        }
-    }
-
-    void FixedUpdate() {
         // Rotate to face current direction
         float facingAngle = Vector2.SignedAngle(spriteOrientation, facingDirection);
         transform.rotation = Quaternion.AngleAxis(facingAngle, Vector3.forward);
@@ -111,6 +118,7 @@ public class TankController : MonoBehaviour
 
     public void Disable() {
         isControllerEnabled = false;
+        audioSource.Stop();
         primaryWeapon.Disable();
         secondaryWeapon.Disable();
     }

@@ -17,12 +17,14 @@ public class Player : MonoBehaviour
     private TankController tankController;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
+    private Animator animator;
     private bool isGameOver = false;
     
     void Awake() {
         tankController = GetComponent<TankController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
     
     void Start() {
@@ -38,10 +40,8 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
-        healthBar.SetVisible(false);
-        tankController.Disable();
-        spriteRenderer.enabled = false;
-        boxCollider2D.enabled = false;
+        animator.SetTrigger("Die");
+        Disable();
         GameController.instance.EndGame();
     }
 
@@ -55,6 +55,12 @@ public class Player : MonoBehaviour
 
         statsDisplay.SetStats(playerStats);
         return health > 0;
+    }
+
+    public void Disable() {
+        healthBar.SetVisible(false);
+        tankController.Disable();
+        boxCollider2D.enabled = false;
     }
 
     private void SetHealth(int health) {

@@ -13,7 +13,7 @@ public class StatsDisplay : MonoBehaviour
 
     public void SetStats(PlayerStats playerStats) {
         string healthRemaining = "Health Remaining: " + playerStats.healthRemaining;
-        string distanceTravelled = "Distance Travelled: " + playerStats.distanceTravelled + " m";
+        string distanceTravelled = "Distance Travelled: " + playerStats.distanceTravelled.ToString("F2") + " m";
         string primaryBulletsFired = playerStats.primaryWeaponStats.weaponName + " " + playerStats.primaryWeaponStats.projectileName + "s Fired: " + playerStats.primaryWeaponStats.projectilesFired;
         string secondaryBulletsFired = playerStats.secondaryWeaponStats.weaponName + " " + playerStats.secondaryWeaponStats.projectileName + "s Fired: " + playerStats.secondaryWeaponStats.projectilesFired;
 
