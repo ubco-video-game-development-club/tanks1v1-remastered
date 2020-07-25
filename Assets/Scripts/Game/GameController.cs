@@ -98,6 +98,4 @@ public class GameController : MonoBehaviour
             HUD.instance.SetWinner(player2.name);
         }
     }
-    
-    
 }
