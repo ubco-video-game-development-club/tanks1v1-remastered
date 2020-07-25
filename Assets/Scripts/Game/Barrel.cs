@@ -5,12 +5,15 @@ using UnityEngine;
 public class Barrel : MonoBehaviour
 {
     public Sprite destroyedSprite;
+    public AudioClip destroySound;
 
     private bool destroyed;
+    private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
 
     void Awake() {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
@@ -28,6 +31,7 @@ public class Barrel : MonoBehaviour
 
     private void DestroyBarrel() {
         destroyed = true;
+        audioSource.PlayOneShot(destroySound);
         spriteRenderer.sprite = destroyedSprite;
         circleCollider.enabled = false;
     }
