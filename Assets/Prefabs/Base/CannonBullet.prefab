@@ -235,3 +235,5 @@ MonoBehaviour:
   damage: 5
   range: 40
   hitSound: {fileID: 8300000, guid: f6e9700b78e73614fb75d838238646cf, type: 3}
+  hitEffectPrefab: {fileID: 7210742986611392153, guid: 4b80119d41b736242ab80aeecf77bf65,
+    type: 3}

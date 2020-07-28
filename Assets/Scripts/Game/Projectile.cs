@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public int damage = 2;
     public float range = 10f;
     public AudioClip hitSound;
+    public ParticleSystem hitEffectPrefab;
 
     private Rigidbody2D rb2D;
     private AudioSource audioSource;
@@ -65,6 +66,9 @@ public class Projectile : MonoBehaviour
 
         // Play audio clip on hit
         audioSource.PlayOneShot(hitSound);
+
+        // Spawn the particle hit effect
+        Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
 
         // Hide the object on collision and destroy after 1 second
         spriteRenderer.enabled = false;
