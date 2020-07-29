@@ -1306,22 +1306,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This Game was created as part of the Two In One challange, hosted by the
-    UBCO Video Game Development Club
+  m_text: 'This Game was created as part of the Two In One challenge, hosted by the
+    UBCO Video Game Development Club.
 
 
-    Jaden Balogh - Gameplay
+    Gameplay - Jaden Balogh
 
-    lilmergo
-    - Art, Sprites
+    Art - Megan
+    Nguyen, Adam Collins
 
-    wubbadukky - Art, Sounds
+    UI - Ahmed Shahriyar
 
-    Caffeine - UI
+    Sounds - Adam Collins
+
+    Music
+    - Jaden Balogh
 
 
-    Find us
-    on Instagram! @ubco_vgdc'
+    Find us on Instagram! @ubco_vgdc'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba310e4db4304e44aa03c31262d5ead6, type: 2}
   m_sharedMaterial: {fileID: -3719446780681692980, guid: ba310e4db4304e44aa03c31262d5ead6,
