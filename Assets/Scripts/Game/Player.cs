@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public HealthBar healthBarPrefab;
     public int maxHealth = 30;
     public StatsDisplay statsDisplay;
+    public AudioClip deathSound;
 
     private HealthBar healthBar;
     private PlayerStats playerStats;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider2D;
     private Animator animator;
+    private AudioSource audioSource;
     private bool isGameOver = false;
     
     void Awake() {
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Start() {
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour
 
     public void Die() {
         animator.SetTrigger("Die");
+        audioSource.PlayOneShot(deathSound);
         Disable();
         GameController.instance.EndGame();
     }

@@ -293,3 +293,4 @@ MonoBehaviour:
     type: 3}
   maxHealth: 30
   statsDisplay: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 3be44315036fd654d9d5dd3368fb480a, type: 3}
