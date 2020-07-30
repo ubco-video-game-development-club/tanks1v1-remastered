@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 30;
     public StatsDisplay statsDisplay;
     public AudioClip deathSound;
+    public float deathSoundVolume = 0.15f;
 
     private HealthBar healthBar;
     private PlayerStats playerStats;
@@ -43,9 +44,10 @@ public class Player : MonoBehaviour
     }
 
     public void Die() {
-        animator.SetTrigger("Die");
-        audioSource.PlayOneShot(deathSound);
         Disable();
+        animator.SetTrigger("Die");
+        audioSource.volume = deathSoundVolume;
+        audioSource.PlayOneShot(deathSound);
         GameController.instance.EndGame();
     }
 
@@ -72,11 +74,11 @@ public class Player : MonoBehaviour
             return;
         }
 
-        this.health = health;
-        healthBar.SetHealthPercentage(((float) health) / maxHealth);
+        this.health = Mathf.Max(0, health);
+        healthBar.SetHealthPercentage(((float) this.health) / maxHealth);
 
-        if (health <= 0) {
-            health = 0;
+        if (this.health <= 0) {
+            this.health = 0;
             Die();
         }
     }

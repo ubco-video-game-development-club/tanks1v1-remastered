@@ -93,9 +93,9 @@ public class GameController : MonoBehaviour
         bool isPlayer1Alive = player1.EndGame();
         bool isPlayer2Alive = player2.EndGame();
         if (isPlayer1Alive) {
-            HUD.instance.SetWinner(player1.name);
+            HUD.instance.SetWinner(player1.playerName);
         } else if(isPlayer2Alive) {
-            HUD.instance.SetWinner(player2.name);
+            HUD.instance.SetWinner(player2.playerName);
         }
     }
 }
