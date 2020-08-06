@@ -94,7 +94,7 @@ public class TankController : MonoBehaviour
 
         // Apply movement
         rb2D.position += facingDirection * moveInput * Time.deltaTime;
-        distanceTravelled += moveInput * Time.deltaTime;
+        distanceTravelled += Mathf.Abs(moveInput) * Time.deltaTime;
 
         // Play movement sounds
         if (!isMoving && moveInput != 0) {
